@@ -14,7 +14,7 @@ import UniversalEvents, {UniversalEventsToken} from 'fusion-plugin-universal-eve
 import {FetchToken} from 'fusion-tokens';
 import Redux, {ReduxToken, ReducerToken, EnhancerToken} from 'fusion-plugin-react-redux';
 import fetch from 'unfetch';
-import reduxActionEnhancerFactory from 'fusion-redux-action-emitter-enhancer';
+import reduxActionEmitterEnhancerFactory from 'fusion-redux-action-emitter-enhancer';
 import reducer from './reducers/root.js'
 
 export default function start() {
@@ -25,7 +25,7 @@ export default function start() {
 
   app.register(ReduxToken, Redux);
   app.register(ReducerToken, reducer);
-  app.register(EnhancerToken, reduxActionEnhancerFactory(UniversalEvents));
+  app.register(EnhancerToken, reduxActionEmitterEnhancerFactory(UniversalEvents));
 
   return app;
 }

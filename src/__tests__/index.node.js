@@ -12,7 +12,7 @@ import actionEmitterFunc from '../index.js';
 const getMockEventEmitterFactory = function() {
   const handlers = {};
   return {
-    of(ctx) {
+    from(ctx) {
       return {
         on(type, handler) {
           handlers[type] = handler;
@@ -64,7 +64,7 @@ test('Emits actions', t => {
 
   // Test Emits
   mockEventEmitter
-    .of(mockCtx)
+    .from(mockCtx)
     .on('redux-action-emitter:action', (payload, ctx) => {
       t.equal(
         payload.type,

@@ -15,7 +15,10 @@ export default EventEmitter => {
     return {
       ...store,
       dispatch: action => {
-        EventEmitter.of(store.ctx).emit('redux-action-emitter:action', action);
+        EventEmitter.from(store.ctx).emit(
+          'redux-action-emitter:action',
+          action
+        );
         return store.dispatch(action);
       },
     };

@@ -25,7 +25,7 @@ export default function start() {
 
   app.register(ReduxToken, Redux);
   app.register(ReducerToken, reducer);
-  app.register(EnhancerToken, reduxActionEnhancerFactory(EventEmitter));
+  app.register(EnhancerToken, reduxActionEnhancerFactory(UniversalEvents));
 
   return app;
 }

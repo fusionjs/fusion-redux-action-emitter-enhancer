@@ -6,7 +6,7 @@
 
 import {createStore, compose} from 'redux';
 import test from 'tape-cup';
-import actionEmitterFunc from '../index.js';
+import actionEmitterPlugin from '../index.js';
 
 /* Mocks & Mock Factories */
 const getMockEventEmitterFactory = function() {
@@ -39,10 +39,13 @@ const sampleReducer = (state = [], action) => {
 };
 
 test('Instantiation', t => {
-  t.throws(actionEmitterFunc, 'requires the EventEmitter dependency');
+  t.throws(
+    actionEmitterPlugin.provides,
+    'requires the EventEmitter dependency'
+  );
   const mockEventEmitter = getMockEventEmitterFactory();
   t.doesNotThrow(
-    () => actionEmitterFunc(mockEventEmitter),
+    () => actionEmitterPlugin.provides(mockEventEmitter),
     'provide the EventEmitter dependency'
   );
   t.end();
@@ -50,7 +53,7 @@ test('Instantiation', t => {
 test('Emits actions', t => {
   // Setup
   const mockEventEmitter = getMockEventEmitterFactory();
-  const enhancer = actionEmitterFunc(mockEventEmitter);
+  const enhancer = actionEmitterPlugin.provides(mockEventEmitter);
   const mockCtx = {mock: true};
   const store = createStore(
     sampleReducer,

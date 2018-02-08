@@ -36,7 +36,7 @@
     "fusion-plugin-react-redux": "^0.3.0",
     "fusion-plugin-universal-events": "^0.3.0",
     "fusion-test-utils": "^0.4.1",
-    "fusion-tokens": "^0.0.5",
+    "fusion-tokens": "^0.0.6",
     "nyc": "11.4.1",
     "prettier": "1.10.2",
     "react": "^16.2.0",

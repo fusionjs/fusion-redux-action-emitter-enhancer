@@ -12,9 +12,19 @@ This is useful for when you want to collect data about redux actions, potentiall
 
 ### Table of contents
 
-TBD
+- [Installation](#installation)
+- [Usage](#usage)
+- [Capturing action emits](#capturing-action-emits)
+- [Setup](#setup)
+- [API](#api)
+  - [Registration API](#registration-api)
+    - [`ReduxActionEmitterEnhancer`](#reduxactionemitterenhancer)
+    - [`EnhancerToken`](#enhancertoken)
+  - [Dependencies](#dependencies)
+  - [Service API](#service-api)
+  - [Emit API](#emit-api)
 
---
+---
 
 ### Installation
 

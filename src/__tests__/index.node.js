@@ -91,12 +91,15 @@ test('Emits actions', t => {
   const store = createStore(
     sampleReducer,
     [],
-    compose(enhancer, createStore => (...args) => {
-      const store = createStore(...args);
-      // $FlowFixMe
-      store.ctx = mockCtx;
-      return store;
-    })
+    compose(
+      enhancer,
+      createStore => (...args) => {
+        const store = createStore(...args);
+        // $FlowFixMe
+        store.ctx = mockCtx;
+        return store;
+      }
+    )
   );
 
   // Test Emits
@@ -139,12 +142,15 @@ test('transformers', t => {
   const store = createStore(
     sampleReducer,
     [],
-    compose(enhancer, createStore => (...args) => {
-      const store = createStore(...args);
-      // $FlowFixMe
-      store.ctx = mockCtx;
-      return store;
-    })
+    compose(
+      enhancer,
+      createStore => (...args) => {
+        const store = createStore(...args);
+        // $FlowFixMe
+        store.ctx = mockCtx;
+        return store;
+      }
+    )
   );
 
   // Test Emits

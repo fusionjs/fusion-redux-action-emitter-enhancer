@@ -33,7 +33,7 @@ const plugin = createPlugin({
   },
   provides({
     emitter,
-    transformer,
+    transformer = defaultTransformer,
   }: {
     emitter: IEmitter,
     transformer?: Function,
@@ -48,15 +48,14 @@ const plugin = createPlugin({
       const store: Store<*, *, *> = createStore(...args);
       return {
         ...store,
-        dispatch: (action: Object) => {
-          let payload: Object = !transformer
-            ? defaultTransformer(action)
-            : transformer(action);
-
-          if (payload) {
-            emitter // $FlowFixMe
-              .from(store.ctx)
-              .emit('redux-action-emitter:action', payload);
+        dispatch: (action: mixed) => {
+          if (action && typeof action.type === 'string') {
+            let payload: Object = transformer(action);
+            if (payload) {
+              emitter // $FlowFixMe
+                .from(store.ctx)
+                .emit('redux-action-emitter:action', payload);
+            }
           }
 
           return store.dispatch(action);
